@@ -1,4 +1,4 @@
-import Attendance from "./attendance.jsx";
+import Attendance from "../public/attendance.jsx";
 function App() {
   return (
     <>
