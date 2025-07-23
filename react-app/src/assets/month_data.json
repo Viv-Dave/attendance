@@ -1,0 +1,12 @@
+[
+    { "week": "Week 1", "present": 34, "absent": 1, "leave": 0 },
+    { "week": "Week 2", "present": 33, "absent": 2, "leave": 0 },
+    { "week": "Week 3", "present": 33, "absent": 1, "leave": 1 },
+    { "week": "Week 4", "present": 32, "absent": 1, "leave": 2 },
+    { "week": "Week 5", "present": 33, "absent": 2, "leave": 0 },
+    { "week": "Week 6", "present": 34, "absent": 1, "leave": 0 },
+    { "week": "Week 7", "present": 32, "absent": 2, "leave": 1 },
+    { "week": "Week 8", "present": 33, "absent": 1, "leave": 1 },
+    { "week": "Week 9", "present": 34, "absent": 1, "leave": 0 },
+    { "week": "Week 10", "present": 32, "absent": 2, "leave": 1 }
+]

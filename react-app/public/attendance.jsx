@@ -12,12 +12,12 @@ export default function Attendance() {
     {
       date: "2025-07-15",
       present: 33,
-      absent: 17,
+      absent: 2,
     },
     {
       date: "2025-07-16",
-      present: 44,
-      absent: 6,
+      present: 26,
+      absent: 9,
     },
   ]);
 
