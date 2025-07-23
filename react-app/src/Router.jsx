@@ -7,19 +7,27 @@ import HomePage from "./components/HomePage";
 import Dashboard from "./components/dashboard";
 // import Reports from "./components/reports";
 import Manage from "./components/manage";
+import Layout from "./components/Layout";
 function PageRouter() {
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage />,
-    },
-    {
-      path: "/Dashboard",
-      element: <Dashboard />,
-    },
-    {
-      path: "/Manage",
-      element: <Manage />,
+      element: <Layout />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "dashboard",
+          element: <Dashboard />,
+        },
+        {
+          path: "manage",
+          element: <Manage />,
+        },
+        // ...other routes
+      ],
     },
   ]);
   return <RouterProvider router={routes} />;

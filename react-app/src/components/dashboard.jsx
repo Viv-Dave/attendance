@@ -7,6 +7,8 @@ import {
   CalendarOff,
   UserCircle,
 } from "lucide-react";
+// The SubmitAttendance component doesn't need to be changed.
+// It will be imported from its own file in a real app.
 function SubmitAttendance({ onSubmit }) {
   return (
     <div className="mt-4 border-t border-slate-200 pt-4">
@@ -22,6 +24,8 @@ function SubmitAttendance({ onSubmit }) {
 
 export default function Dashboard() {
   const [attendance, setAttendance] = useState({});
+  // --- NEW: State for pagination ---
+  const [currentPage, setCurrentPage] = useState(0);
 
   const handleAttendance = (id, status) => {
     setAttendance((prev) => ({
@@ -49,15 +53,23 @@ export default function Dashboard() {
     late: values.filter((s) => s === "Late").length,
   };
 
+  // --- NEW: Pagination Logic ---
+  const itemsPerPage = 5;
+  const pageCount = Math.ceil(people.length / itemsPerPage);
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPeople = people.slice(startIndex, endIndex);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      {/* Main Content */}
       <div className="lg:col-span-2">
         <h1 className="m-2 animate-title text-3xl font-bold text-slate-800 mb-6">
           Today's Attendance
         </h1>
 
+        {/* KPI Cards remain the same */}
         <div className="m-2 grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          {/* KPI Card for Present */}
           <div className="kpi-card bg-white rounded-lg p-5 shadow-sm border border-slate-200 flex items-center">
             <div className="rounded-full p-3 mr-4 bg-emerald-100 text-emerald-600">
               <CheckCircle size={22} />
@@ -69,6 +81,7 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
+          {/* KPI Card for Absent */}
           <div className="kpi-card bg-white rounded-lg p-5 shadow-sm border border-slate-200 flex items-center">
             <div className="rounded-full p-3 mr-4 bg-rose-100 text-rose-600">
               <XCircle size={22} />
@@ -80,6 +93,7 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
+          {/* KPI Card for On Leave */}
           <div className="kpi-card bg-white rounded-lg p-5 shadow-sm border border-slate-200 flex items-center">
             <div className="rounded-full p-3 mr-4 bg-amber-100 text-amber-600">
               <CalendarOff size={22} />
@@ -91,6 +105,7 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
+          {/* KPI Card for Late */}
           <div className="kpi-card bg-white rounded-lg p-5 shadow-sm border border-slate-200 flex items-center">
             <div className="rounded-full p-3 mr-4 bg-orange-100 text-orange-600">
               <Clock size={22} />
@@ -102,7 +117,8 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="attendance-table bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden m-1.5">
+        {/* Attendance Table Wrapper */}
+        <div className="attendance-table bg-white rounded-lg shadow-sm border border-slate-200 overflow-x-auto m-1.5">
           <table className="w-full">
             <thead className="bg-slate-50 border-b border-slate-200">
               <tr>
@@ -115,9 +131,10 @@ export default function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {people.map((emp) => (
+              {/* --- CHANGE: Mapping over the sliced data --- */}
+              {currentPeople.map((emp) => (
                 <tr
-                  key={emp.employeeID}
+                  key={emp.employeeId}
                   className="border-b border-slate-100 last:border-b-0"
                 >
                   <td className="p-4">
@@ -128,6 +145,7 @@ export default function Dashboard() {
                   </td>
                   <td className="p-4">
                     <div className="flex flex-wrap gap-2">
+                      {/* Buttons remain the same */}
                       <button
                         onClick={() =>
                           handleAttendance(emp.employeeId, "Present")
@@ -181,8 +199,40 @@ export default function Dashboard() {
             </tbody>
           </table>
         </div>
+
+        {/* --- NEW: Pagination Controls --- */}
+        <div className="flex items-center justify-center gap-2 mt-6">
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 0}
+            className="px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-300 rounded-md hover:bg-slate-50 disabled:opacity-50"
+          >
+            Previous
+          </button>
+          {Array.from({ length: pageCount }, (_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentPage(i)}
+              className={`px-4 py-2 text-sm font-medium border rounded-md ${
+                currentPage === i
+                  ? "bg-slate-900 text-white border-slate-900"
+                  : "bg-white text-slate-700 border-slate-300 hover:bg-slate-50"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === pageCount - 1}
+            className="px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-300 rounded-md hover:bg-slate-50 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
       </div>
 
+      {/* Right Sidebar remains the same */}
       <div className="space-y-6">
         <div className="bg-white m-1.5 p-5 rounded-lg shadow-sm border border-slate-200">
           <div className="flex items-center">

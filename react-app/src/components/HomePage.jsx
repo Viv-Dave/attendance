@@ -51,14 +51,6 @@ const HomePage = React.memo(function HomePage() {
           <b>Krishna</b> have a built a powerful attendance dashboard that can
           manage and track attendance seamlessly.
         </p>
-        <div className="animate-cta flex justify-center gap-4">
-          <Link
-            to="/dashboard"
-            className="bg-slate-900 hover:bg-slate-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg transform hover:scale-105"
-          >
-            Go to Dashboard
-          </Link>
-        </div>
       </div>
 
       <div className="grid md:grid-cols-4 gap-16">
