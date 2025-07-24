@@ -1,7 +1,8 @@
+import PageRouter from "./Router.jsx";
 function App() {
   return (
     <>
-      <div></div>
+      <PageRouter />
     </>
   );
 }
