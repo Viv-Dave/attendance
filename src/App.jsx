@@ -1,10 +1,7 @@
-import Attendance from "../public/attendance.jsx";
 function App() {
   return (
     <>
-      <div>
-        <Attendance />
-      </div>
+      <div></div>
     </>
   );
 }
