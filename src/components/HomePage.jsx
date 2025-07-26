@@ -58,28 +58,28 @@ const HomePage = React.memo(function HomePage() {
           icon={<BarChart3 size={32} strokeWidth={1.5} />}
           title="Dashboard"
         >
-          <b>Name</b> built the Dashboard section of this website with multiple
+          <b>Vivek</b> built the Dashboard section of this website with multiple
           options hence giving more insights onto the attendance data.
         </FeatureCard>
         <FeatureCard
           icon={<Users size={32} strokeWidth={1.5} />}
           title="HomePage"
         >
-          <b>Name</b> developed the HomePage with a very clean and modern
+          <b>Mihir</b> developed the HomePage with a very clean and modern
           design. The sleek UI is inspiring and outright creative.
         </FeatureCard>
         <FeatureCard
           icon={<ShieldCheck size={32} strokeWidth={1.5} />}
           title="Manage"
         >
-          <b>Name</b> created the Manage section of this website which allows
+          <b>Ansh</b> created the Manage section of this website which allows
           users to manage and visualise their attendance data effectively.
         </FeatureCard>
         <FeatureCard
           icon={<BarChart3 size={32} strokeWidth={1.5} />}
-          title="Reports"
+          title="Routers and Sidebar"
         >
-          <b>Name</b> built the Routers and sidebar for this project to help
+          <b>Krishna</b> built the Routers and sidebar for this project to help
           navigate across multiple pages with ease
         </FeatureCard>
       </div>

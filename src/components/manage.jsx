@@ -14,14 +14,11 @@ import {
   Cell,
 } from "recharts";
 
-// Corrected paths based on your file structure (components -> src -> assets)
 import weekData from "../assets/month_data.json";
 import dayData from "../assets/days_data.json";
 
-// --- Reusable Chart Components ---
-
 const TodayPieChart = ({ data }) => {
-  const COLORS = ["#10B981", "#EF4444", "#F59E0B"]; // Emerald, Rose, Amber
+  const COLORS = ["#10B981", "#EF4444", "#F59E0B"];
   return (
     <ResponsiveContainer width="100%" height={400}>
       <PieChart>
@@ -78,20 +75,16 @@ const DailyBarChart = ({ data }) => (
   </ResponsiveContainer>
 );
 
-// --- The Main Manage Component ---
-// It is wrapped in React.memo to prevent unnecessary re-renders when the parent layout changes.
 const Manage = React.memo(function Manage() {
   const [activeTab, setActiveTab] = useState("today");
   const chartContainerRef = useRef(null);
 
-  // Fake data for today's snapshot
   const todayData = [
     { name: "Present", value: 30 },
     { name: "Absent", value: 3 },
     { name: "On Leave", value: 2 },
   ];
 
-  // GSAP animation for the chart when the tab changes
   useEffect(() => {
     if (chartContainerRef.current) {
       gsap.fromTo(
@@ -103,7 +96,6 @@ const Manage = React.memo(function Manage() {
   }, [activeTab]);
 
   return (
-    // This component now only renders its own content. The sidebar and main layout are handled by Layout.jsx
     <div className="w-full">
       <h1 className="text-4xl font-extrabold text-slate-800 mb-4">
         Manage & Analyze
@@ -113,7 +105,6 @@ const Manage = React.memo(function Manage() {
         decisions.
       </p>
 
-      {/* Tab buttons to switch between chart views */}
       <div className="flex space-x-2 border-b border-slate-200 mb-8">
         <button
           onClick={() => setActiveTab("today")}
@@ -147,7 +138,6 @@ const Manage = React.memo(function Manage() {
         </button>
       </div>
 
-      {/* The container where the selected chart will be rendered */}
       <div
         ref={chartContainerRef}
         className="bg-white p-6 rounded-lg shadow-md border border-slate-200"

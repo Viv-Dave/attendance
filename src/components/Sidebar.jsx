@@ -26,7 +26,7 @@ export default function Sidebar() {
   return (
     <aside className="h-screen bg-slate-900 text-white flex flex-col w-64 shadow-lg">
       <div className="flex items-center justify-center h-20 border-b border-slate-800">
-        <span className="text-2xl font-extrabold text-emerald-400 tracking-tight">
+        <span className="tex  t-2xl font-extrabold text-emerald-400 tracking-tight">
           Attendance
         </span>
       </div>

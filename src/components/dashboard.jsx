@@ -7,8 +7,6 @@ import {
   CalendarOff,
   UserCircle,
 } from "lucide-react";
-// The SubmitAttendance component doesn't need to be changed.
-// It will be imported from its own file in a real app.
 function SubmitAttendance({ onSubmit }) {
   return (
     <div className="mt-4 border-t border-slate-200 pt-4">

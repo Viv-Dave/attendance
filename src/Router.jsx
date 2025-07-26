@@ -26,7 +26,6 @@ function PageRouter() {
           path: "manage",
           element: <Manage />,
         },
-        // ...other routes
       ],
     },
   ]);
